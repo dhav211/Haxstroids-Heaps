@@ -1,5 +1,6 @@
 package en;
 
+import h2d.Tile;
 import h2d.Scene;
 import hxd.Math;
 import hxd.res.DefaultFont;
@@ -15,16 +16,16 @@ class Ship extends Entity
     final ACCLERATION_TIME:Float = 100;
 
     var currentSpeed:Float = 0;
-    var scene:Scene;
+    
 
     public function new(_s2d:Scene, _game:Game, _x:Float, _y:Float) 
     {
         super(_s2d, _game, _x,_y);
-        scene = _s2d;
-        tile=hxd.Res.ship.toTile();
+        
+        var tile:Tile=hxd.Res.ship.toTile();
         tile = tile.center();
         
-        set_tile(tile);
+        sprite = new Bitmap(tile, this);
     }
 
     public override function update(elapsed:Float) 
@@ -43,6 +44,8 @@ class Ship extends Entity
 
         move(currentSpeed * elapsed, currentSpeed * elapsed);
 
+        FireLaser();
+
         Warp();
         
         if (right)
@@ -53,6 +56,16 @@ class Ship extends Entity
         {
             rotate(-5 * elapsed);
         }
+    }
+
+    function FireLaser() 
+    {
+        var firePressed:Bool = Key.isPressed(Key.SPACE);
+
+        if (firePressed)
+        {
+            var laser:Laser = new Laser(scene, game, x, y, rotation);
+        }    
     }
 
     function SetCurrentSpeed(_up:Bool)
