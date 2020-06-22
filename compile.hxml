@@ -1,0 +1,8 @@
+--class-path src
+
+-lib heaps
+-lib hlsdl
+-hl asteroids.hl
+-main Game
+
+-D resourcesPath=assets
