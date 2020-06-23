@@ -1,5 +1,6 @@
 package en;
 
+import differ.shapes.Circle;
 import h2d.Bitmap;
 import h2d.Tile;
 import h2d.Scene;
@@ -18,10 +19,13 @@ class Laser extends Entity
         tile = tile.center();
         
         sprite = new Bitmap(tile, this);
+        collisionCircle = new Circle(x, y, tile.width / 2);
     }
 
     public override function update(elapsed:Float) 
     {
+        super.update(elapsed);
+        
         move(MOVE_SPEED * elapsed, MOVE_SPEED * elapsed);
 
         if (IsOutOfBounds())

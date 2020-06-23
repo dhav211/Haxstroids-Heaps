@@ -2,6 +2,7 @@
 
 -lib heaps
 -lib hlsdl
+-lib differ
 -hl asteroids.hl
 -main Game
 

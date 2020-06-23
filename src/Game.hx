@@ -2,6 +2,7 @@ package;
 
 import en.Ship;
 import en.Entity;
+import en.Asteroid;
 
 class Game extends hxd.App 
 {
@@ -12,6 +13,8 @@ class Game extends hxd.App
         hxd.Res.initEmbed();
 
         var ship:Ship = new Ship(s2d, this, 100, 100);
+
+        var asteroid = new Asteroid(s2d, this, 500, 500);
     }
 
     static function main() 
@@ -23,7 +26,7 @@ class Game extends hxd.App
 	{
         for (entity in entities) 
         {
-			entity.update(elapsed);
-		}
-	}
+            entity.update(elapsed);
+        }
+    }
 }

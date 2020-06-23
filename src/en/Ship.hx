@@ -1,5 +1,6 @@
 package en;
 
+import differ.data.ShapeCollision;
 import h2d.Tile;
 import h2d.Scene;
 import hxd.Math;
@@ -8,6 +9,8 @@ import hxd.Key;
 import h2d.Bitmap;
 import hxd.Res;
 import h2d.Object;
+import differ.shapes.Circle;
+import differ.Collision;
 
 
 class Ship extends Entity
@@ -16,7 +19,6 @@ class Ship extends Entity
     final ACCLERATION_TIME:Float = 100;
 
     var currentSpeed:Float = 0;
-    
 
     public function new(_s2d:Scene, _game:Game, _x:Float, _y:Float) 
     {
@@ -26,10 +28,13 @@ class Ship extends Entity
         tile = tile.center();
         
         sprite = new Bitmap(tile, this);
+        collisionCircle = new Circle(x, y, tile.width / 2);
     }
 
     public override function update(elapsed:Float) 
     {
+        super.update(elapsed);
+
         var up:Bool = Key.isDown(Key.UP);
         var down:Bool = Key.isDown(Key.DOWN);
         var right:Bool = Key.isDown(Key.RIGHT);
@@ -56,6 +61,8 @@ class Ship extends Entity
         {
             rotate(-5 * elapsed);
         }
+
+
     }
 
     function FireLaser() 
@@ -104,5 +111,26 @@ class Ship extends Entity
 
         if (y < -radius)
             y = scene.height + radius;
+    }
+
+    function Collide()
+    {
+        for (entity in game.entities)
+		{
+            if (entity != this) 
+            {
+				var collideInfo:ShapeCollision;
+
+                if (Std.is(entity, Asteroid)) 
+                {
+					collideInfo = Collision.shapeWithShape(collisionCircle, entity.collisionCircle);
+
+                    if (collideInfo != null) 
+                    {
+						// PLAYER DEATH FUNCTION
+					}
+				}
+			}
+		}
     }
 }
