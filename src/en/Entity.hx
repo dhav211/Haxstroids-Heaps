@@ -35,4 +35,21 @@ class Entity extends Object
         game.entities.remove(this);
         remove();
     }
+
+    function Warp()
+	{
+		var radius:Float = collisionCircle.radius;
+
+		if (x > scene.width + radius)
+			x = -radius;
+
+		if (x < -radius)
+			x = scene.width + radius;
+
+		if (y > scene.height + radius)
+			y = -radius;
+
+		if (y < -radius)
+			y = scene.height + radius;
+	}
 }

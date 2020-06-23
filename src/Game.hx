@@ -7,14 +7,15 @@ import en.Asteroid;
 class Game extends hxd.App 
 {
     public var entities(default, default):Array<Entity> = [];
+    public var asteroidFactory(default, null):AsteroidFactory;
 
     override function init() 
     {
         hxd.Res.initEmbed();
 
-        var ship:Ship = new Ship(s2d, this, 100, 100);
+        asteroidFactory = new AsteroidFactory(s2d, this);
 
-        var asteroid = new Asteroid(s2d, this, 500, 500);
+        var ship:Ship = new Ship(s2d, this, 100, 100);
     }
 
     static function main() 
@@ -28,5 +29,7 @@ class Game extends hxd.App
         {
             entity.update(elapsed);
         }
+
+        asteroidFactory.update(elapsed);
     }
 }

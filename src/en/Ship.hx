@@ -96,23 +96,6 @@ class Ship extends Entity
         return MAX_SPEED / ACCLERATION_TIME;
     }
 
-    function Warp()
-    {
-        var radius:Float = 8;
-
-        if (x > scene.width + radius)
-            x = -radius;
-
-        if (x < -radius)
-            x = scene.width + radius;
-
-        if (y > scene.height + radius)
-            y = -radius;
-
-        if (y < -radius)
-            y = scene.height + radius;
-    }
-
     function Collide()
     {
         for (entity in game.entities)
