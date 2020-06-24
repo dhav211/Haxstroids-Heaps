@@ -6,6 +6,6 @@
 -DONE-6. Collisions, figure out differ so the spaceship can collide with an astroid. Then have laser collide with asteroid
 -DONE-7. Have asteroid move.
 -DONE-8. Spawn asteroid out side of screen limits, it will then move into the screen, when it leaves screen limits, have it warp like the spaceship.
-9. Create a small asteroid.
-10. When big asteroid is hit it will turn into 3 small asteroids. When the small asteroid is hit it will be destroyed.
+-DONE-9. Create a small asteroid.
+-DONE-10. When big asteroid is hit it will turn into 3 small asteroids. When the small asteroid is hit it will be destroyed.
 11. Display points in top right of screen. 10 points for big asteroid, 15 for small.

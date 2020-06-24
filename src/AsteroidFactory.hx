@@ -7,6 +7,10 @@ class AsteroidFactory
 {
     var spawnTime:Float = 10;
     var currentSpawnTime:Float = 0;
+    final INITIAL_SPAWN_TIME:Int = 10;
+
+    var currentSpawnIncrement:Int = 0;
+    final SPAWN_INCREMENT:Int = 3;
 
     var game:Game;
     var scene:Scene;
@@ -36,6 +40,16 @@ class AsteroidFactory
             var asteroid = new Asteroid(scene, game, spawnPosition.x, spawnPosition.y, moveDirection.x, moveDirection.y);
 
             currentSpawnTime = spawnTime;
+
+            currentSpawnIncrement++;
+            
+            if(currentSpawnIncrement == SPAWN_INCREMENT)
+            {
+                if (spawnTime > 2)
+                {
+                    spawnTime -= 1;
+                }
+            }
         }
     }
 
@@ -56,5 +70,12 @@ class AsteroidFactory
         var yPos:Float = random.randomInt(-50, scene.height + 50);
 
         return yPos;
+    }
+
+    public function onGameOver()
+    {
+        spawnTime = INITIAL_SPAWN_TIME;
+        currentSpawnTime = 0;
+        currentSpawnIncrement = 0;
     }
 }

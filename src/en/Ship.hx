@@ -62,7 +62,7 @@ class Ship extends Entity
             rotate(-5 * elapsed);
         }
 
-
+        Collide();
     }
 
     function FireLaser() 
@@ -104,13 +104,13 @@ class Ship extends Entity
             {
 				var collideInfo:ShapeCollision;
 
-                if (Std.is(entity, Asteroid)) 
+                if (Std.is(entity, Asteroid) || Std.is(entity, SmallAsteroid)) 
                 {
 					collideInfo = Collision.shapeWithShape(collisionCircle, entity.collisionCircle);
 
                     if (collideInfo != null) 
                     {
-						// PLAYER DEATH FUNCTION
+						game.GameOver();
 					}
 				}
 			}

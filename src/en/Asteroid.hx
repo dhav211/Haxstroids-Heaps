@@ -14,7 +14,7 @@ class Asteroid extends Entity
     var xMoveDir:Float = 0;
     var yMoveDir:Float = 0;
 
-    final MOVE_SPEED:Float = 150;
+    final MOVE_SPEED:Float = 75;
 
     var isOnScreen:Bool = false;
 
@@ -67,6 +67,7 @@ class Asteroid extends Entity
                     if (collideInfo != null) 
                     {
                         SpawnSmallAsteroids();
+                        game.stats.IncreaseScore(100);
 
                         dispose();
                         entity.dispose();
